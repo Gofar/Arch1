@@ -1,0 +1,5 @@
+<resources>
+    <string name="app_name">Arch1</string>
+
+    <string name="http_error">网络异常</string>
+</resources>
