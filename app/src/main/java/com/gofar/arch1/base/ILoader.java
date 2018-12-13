@@ -14,8 +14,13 @@ public interface ILoader {
     void showNormal();
 
     /**
+     * Show no data.
+     */
+    void showEmpty();
+
+    /**
      * Show error view.
-     * @param errMsg 错误提示信息
+     * @param errMsg error message
      */
     void showError(String errMsg);
 

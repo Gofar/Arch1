@@ -70,7 +70,6 @@ public abstract class BaseActivity extends SupportActivity implements ILoader {
         ToastUtils.showShort(this, msg);
     }
 
-
     protected void addSubscribe(Disposable disposable) {
         if (mCompositeDisposable == null) {
             mCompositeDisposable = new CompositeDisposable();
