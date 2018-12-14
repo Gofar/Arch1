@@ -38,11 +38,11 @@ public abstract class BaseListLoader<T> {
     private int mCurrentPage = START_PAGE;
     private boolean mIsRefresh = false;
 
-    public BaseListLoader(CompositeDisposable compositeDisposable, RefreshRecyclerView refreshRecyclerView, BaseQuickAdapter<T, ? extends BaseViewHolder> quickAdapter) {
+    public BaseListLoader(@NonNull CompositeDisposable compositeDisposable, @NonNull RefreshRecyclerView refreshRecyclerView, @NonNull BaseQuickAdapter<T, ? extends BaseViewHolder> quickAdapter) {
         this(compositeDisposable, refreshRecyclerView, quickAdapter, true, true);
     }
 
-    public BaseListLoader(CompositeDisposable compositeDisposable, RefreshRecyclerView refreshRecyclerView, BaseQuickAdapter<T, ? extends BaseViewHolder> quickAdapter,
+    public BaseListLoader(@NonNull CompositeDisposable compositeDisposable, @NonNull RefreshRecyclerView refreshRecyclerView, @NonNull BaseQuickAdapter<T, ? extends BaseViewHolder> quickAdapter,
                           boolean enableRefresh, boolean enableLoadMore) {
         mCompositeDisposable = compositeDisposable;
         mRefreshRecyclerView = refreshRecyclerView;
