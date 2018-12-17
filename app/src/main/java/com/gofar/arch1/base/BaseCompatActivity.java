@@ -10,6 +10,8 @@ import com.gofar.titlebar.TitleBar;
 import butterknife.BindView;
 
 /**
+ * 带TitleBar的Activity
+ *
  * @author lcf
  * @date 17/12/2018 下午 4:51
  * @since 1.0
