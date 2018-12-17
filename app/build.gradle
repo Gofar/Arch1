@@ -38,4 +38,5 @@ dependencies {
     implementation 'com.github.czy1121:loadinglayout:1.0.1'
     implementation 'com.scwang.smartrefresh:SmartRefreshLayout:1.1.0-alpha-17'
     implementation 'com.github.CymChad:BaseRecyclerViewAdapterHelper:2.9.44'
+    implementation 'com.gofar:titlebar:1.0.1'
 }
