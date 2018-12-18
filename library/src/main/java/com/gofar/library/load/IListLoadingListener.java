@@ -1,4 +1,4 @@
-package com.gofar.arch1.base;
+package com.gofar.library.load;
 
 import android.support.v7.widget.RecyclerView;
 
@@ -12,10 +12,10 @@ import io.reactivex.Observable;
 
 /**
  * @author lcf
- * @date 2018/6/28 16:55
+ * @date 18/12/2018 下午 6:18
  * @since 1.0
  */
-public interface IListLoader<T> {
+public interface IListLoadingListener<T> {
     /**
      * 是否需要下拉刷新
      *

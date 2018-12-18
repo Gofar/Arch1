@@ -1,11 +1,12 @@
-package com.gofar.arch1.base;
+package com.gofar.library.base;
 
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 
-import com.gofar.arch1.R;
+import com.gofar.library.R;
 import com.gofar.library.entity.BaseEntity;
 import com.gofar.library.load.BaseListLoader;
+import com.gofar.library.load.IListLoadingListener;
 import com.gofar.library.widget.RefreshRecyclerView;
 
 import java.util.List;
@@ -14,26 +15,16 @@ import io.reactivex.Observable;
 
 /**
  * @author lcf
- * @date 13/12/2018 下午 6:04
+ * @date 18/12/2018 下午 6:17
  * @since 1.0
  */
-public abstract class BaseListActivity<T> extends BaseActivity implements IListLoader<T> {
+public abstract class BaseListActivity<T> extends BaseActivity implements IListLoadingListener<T> {
     protected RefreshRecyclerView mRefreshRecyclerView;
     protected BaseListLoader<T> mListLoader;
 
     @Override
-    protected void initialize() {
-
-    }
-
-    @Override
-    protected int getLayoutId() {
-        return 0;
-    }
-
-    @Override
     protected void initView() {
-        initRecycler();
+        initRecyclerView();
         initListLoader();
     }
 
@@ -72,7 +63,7 @@ public abstract class BaseListActivity<T> extends BaseActivity implements IListL
         return new LinearLayoutManager(this);
     }
 
-    protected void initRecycler() {
+    protected void initRecyclerView() {
         mRefreshRecyclerView = findViewById(R.id.refresh_recycler_view);
         if (mRefreshRecyclerView == null) {
             throw new IllegalStateException("this activity must contain a RefreshRecyclerView named 'refresh_recycler_view'");

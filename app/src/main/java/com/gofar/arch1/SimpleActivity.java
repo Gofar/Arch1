@@ -1,6 +1,6 @@
 package com.gofar.arch1;
 
-import com.gofar.arch1.base.BaseActivity1;
+import com.gofar.library.base.BaseActivity;
 import com.gofar.titlebar.TitleBar;
 
 /**
@@ -8,7 +8,7 @@ import com.gofar.titlebar.TitleBar;
  * @date 18/12/2018 上午 11:54
  * @since 1.0
  */
-public class SimpleActivity extends BaseActivity1 {
+public class SimpleActivity extends BaseActivity {
 
     @Override
     protected int getLayoutId() {

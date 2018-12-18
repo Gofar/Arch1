@@ -5,10 +5,11 @@ import android.os.Bundle;
 import android.support.annotation.LayoutRes;
 import android.support.annotation.Nullable;
 
-import com.gofar.arch1.entity.BaseEntity;
-import com.gofar.arch1.utils.RxUtils;
-import com.gofar.arch1.utils.ToastUtils;
-import com.gofar.arch1.widget.LoadingDialog;
+import com.gofar.library.base.ActivityStashManager;
+import com.gofar.library.entity.BaseEntity;
+import com.gofar.library.utils.RxUtils;
+import com.gofar.library.utils.ToastUtils;
+import com.gofar.library.widget.LoadingDialog;
 
 import butterknife.ButterKnife;
 import butterknife.Unbinder;
@@ -156,7 +157,7 @@ public abstract class BaseActivity extends SupportActivity implements ILoader {
     @Override
     protected void onDestroy() {
         super.onDestroy();
-        ActivityStashManager.onDestory(this);
+        ActivityStashManager.onDestroy(this);
         if (mUnBinder != null) {
             mUnBinder.unbind();
             mUnBinder = null;

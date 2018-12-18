@@ -4,13 +4,14 @@ import android.view.LayoutInflater;
 import android.widget.FrameLayout;
 
 import com.gofar.arch1.R;
+import com.gofar.library.base.BaseActivity;
 
 /**
  * @author lcf
  * @date 18/12/2018 下午 2:13
  * @since 1.0
  */
-public abstract class BaseCompatActivity1 extends BaseActivity1 {
+public abstract class BaseCompatActivity1 extends BaseActivity {
     @Override
     protected int getLayoutId() {
         return R.layout.base_compat;

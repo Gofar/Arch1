@@ -2,6 +2,7 @@ package com.gofar.arch1.base;
 
 import com.gofar.arch1.App;
 import com.gofar.arch1.R;
+import com.gofar.library.network.ServerException;
 
 import io.reactivex.observers.ResourceObserver;
 
