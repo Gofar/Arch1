@@ -57,7 +57,7 @@ public abstract class BaseFragment extends SupportFragment implements ILoadingLi
                 initToolbar((Toolbar) titleView);
             }
         }
-        initView();
+        initView(view);
     }
 
     @Override
@@ -91,8 +91,10 @@ public abstract class BaseFragment extends SupportFragment implements ILoadingLi
 
     /**
      * 初始化view
+     *
+     * @param rootView Fragment root view
      */
-    protected abstract void initView();
+    protected abstract void initView(View rootView);
 
     /**
      * 初始化数据
@@ -116,6 +118,7 @@ public abstract class BaseFragment extends SupportFragment implements ILoadingLi
     protected void initTitleBar(TitleBar titleBar) {
 
     }
+
     /**
      * Toast文本
      *
