@@ -71,15 +71,26 @@ public class RetrofitManager {
     }
 
     public Retrofit getRetrofit(Context context, String baseUrl) {
-        return new Retrofit.Builder()
+        mRetrofit= new Retrofit.Builder()
                 .baseUrl(baseUrl)
                 .client(buildDefaultClient(context))
                 .addConverterFactory(GsonConverterFactory.create())
                 .addCallAdapterFactory(RxJava2CallAdapterFactory.create())
                 .build();
+        return mRetrofit;
+    }
+
+    public <T> T build(Class<T> cls){
+        if (mRetrofit==null){
+            throw new IllegalArgumentException("Retrofit is null!");
+        }
+        return mRetrofit.create(cls);
     }
 
     public <T> T build(Retrofit retrofit, Class<T> cls) {
+        if (retrofit == null) {
+            throw new IllegalArgumentException("Retrofit is null!");
+        }
         this.mRetrofit = retrofit;
         return retrofit.create(cls);
     }
