@@ -24,7 +24,6 @@ public abstract class BaseCompatActivity1 extends BaseActivity {
         if (contentLayoutId > 0) {
             LayoutInflater.from(this).inflate(contentLayoutId, flContent);
         }
-
     }
 
     /**
