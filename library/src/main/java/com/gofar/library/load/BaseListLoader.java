@@ -5,7 +5,7 @@ import android.support.annotation.NonNull;
 import com.chad.library.adapter.base.BaseQuickAdapter;
 import com.chad.library.adapter.base.BaseViewHolder;
 import com.gofar.library.entity.BaseEntity;
-import com.gofar.library.network.ServerException;
+import com.gofar.library.network.exceptions.ServerException;
 import com.gofar.library.utils.RxUtils;
 import com.gofar.library.widget.RefreshRecyclerView;
 import com.scwang.smartrefresh.layout.api.RefreshLayout;

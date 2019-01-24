@@ -14,12 +14,9 @@ import com.gofar.library.widget.LoadingDialog;
 import butterknife.ButterKnife;
 import butterknife.Unbinder;
 import io.reactivex.Observable;
-import io.reactivex.android.schedulers.AndroidSchedulers;
 import io.reactivex.disposables.CompositeDisposable;
 import io.reactivex.disposables.Disposable;
 import io.reactivex.functions.Consumer;
-import io.reactivex.observers.ResourceObserver;
-import io.reactivex.schedulers.Schedulers;
 import me.yokeyword.fragmentation.SupportActivity;
 
 /**
@@ -62,7 +59,8 @@ public abstract class BaseActivity extends SupportActivity implements ILoader {
      *
      * @return LayoutRes
      */
-    protected abstract @LayoutRes int getLayoutId();
+    protected abstract @LayoutRes
+    int getLayoutId();
 
     /**
      * 初始化view
@@ -110,41 +108,28 @@ public abstract class BaseActivity extends SupportActivity implements ILoader {
     }
 
     protected <T> void addSubscribe(Observable<BaseEntity<T>> observable, Consumer<T> result) {
-        addSubscribe(observable, result, new Consumer<Throwable>() {
-            @Override
-            public void accept(Throwable throwable) throws Exception {
-                throwable.printStackTrace();
-            }
-        });
+        addSubscribe(observable.compose(RxUtils.handleResult())
+                .compose(RxUtils.rxScheduler())
+                .subscribe(result, Throwable::printStackTrace));
     }
 
     protected <T> void addSubscribe(Observable<BaseEntity<T>> observable, Consumer<T> result, Consumer<Throwable> throwable) {
-        showLoading();
-        addSubscribe(observable.compose(RxUtils.rxScheduler())
-                .compose(RxUtils.handleResult())
-                .subscribeWith(new ResourceObserver<T>() {
-                    @Override
-                    public void onNext(T t) {
-
-                    }
-
-                    @Override
-                    public void onError(Throwable e) {
-                        e.printStackTrace();
-                        showError(e.getMessage());
-                    }
-
-                    @Override
-                    public void onComplete() {
-                        showNormal();
-                    }
-                }));
+        addSubscribe(observable.compose(RxUtils.handleResult())
+                .compose(RxUtils.rxScheduler())
+                .subscribe(result, throwable));
     }
 
-    protected <T> void addSubscribe(Observable<T> observable, BaseObserver<T> baseObserver) {
+    protected <T> void addSubscribe(Observable<BaseEntity<T>> observable, BaseObserver<T> baseObserver) {
         showLoading();
-        addSubscribe(observable.subscribeOn(Schedulers.io())
-                .observeOn(AndroidSchedulers.mainThread())
+        addSubscribe(observable.compose(RxUtils.handleResult())
+                .compose(RxUtils.rxScheduler())
+                .subscribeWith(baseObserver));
+    }
+
+    protected <T extends BaseEntity> void addSubscribeDefault(Observable<T> observable, BaseObserver<T> baseObserver) {
+        showLoading();
+        addSubscribe(observable.compose(RxUtils.handleDefault())
+                .compose(RxUtils.rxScheduler())
                 .subscribeWith(baseObserver));
     }
 

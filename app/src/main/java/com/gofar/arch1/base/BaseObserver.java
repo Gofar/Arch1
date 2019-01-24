@@ -2,7 +2,8 @@ package com.gofar.arch1.base;
 
 import com.gofar.arch1.App;
 import com.gofar.arch1.R;
-import com.gofar.library.network.ServerException;
+import com.gofar.library.network.exceptions.ServerException;
+import com.gofar.library.network.exceptions.TokenExpiredException;
 
 import io.reactivex.observers.ResourceObserver;
 
@@ -31,6 +32,8 @@ public abstract class BaseObserver<T> extends ResourceObserver<T> {
         }
         if (e instanceof ServerException) {
             mILoader.showError(e.getMessage());
+        } else if (e instanceof TokenExpiredException) {
+            mILoader.showError("登录失效");
         } else {
             mILoader.showError(App.getApp().getString(R.string.http_error));
         }

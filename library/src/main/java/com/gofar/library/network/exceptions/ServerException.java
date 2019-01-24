@@ -1,11 +1,11 @@
-package com.gofar.library.network;
+package com.gofar.library.network.exceptions;
 
 /**
  * @author lcf
  * @date 13/12/2018 下午 3:07
  * @since 1.0
  */
-public class ServerException extends Throwable{
+public class ServerException extends Exception{
     private int code;
 
     public ServerException(String message) {
